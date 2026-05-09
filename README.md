@@ -1,80 +1,70 @@
 # Scaffold AI App Skill
 
-`scaffold-ai-app` is a Codex skill for generating a production-oriented AI application scaffold. It is based on a nine-layer AI app layout: API entrypoints, retrieval components, service orchestration, versioned prompts, agents, tools, security filters, evaluation, observability, data, tests, docs, deployment files, and coding-agent context.
+Turn a blank folder into a production-shaped AI application skeleton in one Codex request.
 
-Chinese documentation: [README.zh-CN.md](./README.zh-CN.md)
+`scaffold-ai-app` gives Codex a reusable blueprint for modern AI apps: RAG services, semantic cache, memory, query rewriting, routing, versioned prompts, self-checking agents, pluggable tools, three-layer safety, evaluation, observability, data pipelines, tests, docs, containers, and coding-agent context. It is meant for the moment when a prototype is about to become a real system and `main.py` is no longer enough.
+
+中文说明：[README.zh-CN.md](./README.zh-CN.md)
 
 ## Install
 
-Install directly from GitHub with `npx`:
+Install the skill directly from GitHub:
 
 ```bash
 npx github:edc3000/scaffold-ai-app-skill
 ```
 
-This copies the skill into:
-
-```bash
-${CODEX_HOME:-$HOME/.codex}/skills/scaffold-ai-app
-```
-
-Replace an existing local copy:
-
-```bash
-npx github:edc3000/scaffold-ai-app-skill --force
-```
-
-Install to a custom directory:
-
-```bash
-npx github:edc3000/scaffold-ai-app-skill --target /path/to/skills/scaffold-ai-app
-```
-
-If this package is later published to npm, the same installer can be run in the usual npm form:
+After it is published to npm, install it with the regular npm package form:
 
 ```bash
 npx scaffold-ai-app-skill
 ```
 
-## Use In Codex
+Both commands install the skill to:
 
-After installation, restart Codex or start a new session if the skill list has not refreshed. Then ask Codex something like:
+```bash
+${CODEX_HOME:-$HOME/.codex}/skills/scaffold-ai-app
+```
+
+Restart Codex or start a new session if the skill list has not refreshed.
+
+## Trigger The Skill
+
+Use the skill explicitly in Codex:
 
 ```text
 Use $scaffold-ai-app to create a production-ready AI app scaffold at ./production-ai-app.
 ```
 
-## Use The Generator Directly
+You can also describe the goal naturally:
 
-You can also run the bundled generator:
-
-```bash
-python3 ~/.codex/skills/scaffold-ai-app/scripts/create_scaffold.py ./production-ai-app --name production-ai-app
+```text
+Create a new RAG/agent application scaffold with services, prompts, agents, safety, evals, observability, docs, and deployment files.
 ```
 
-Useful options:
+Good trigger phrases include:
 
-```bash
-python3 ~/.codex/skills/scaffold-ai-app/scripts/create_scaffold.py ./my-ai-app --name my-ai-app --no-frontend
-python3 ~/.codex/skills/scaffold-ai-app/scripts/create_scaffold.py ./my-ai-app --name my-ai-app --force
-```
+- scaffold a production AI app
+- create a RAG app skeleton
+- bootstrap an agent application
+- structure a FastAPI AI project
+- add evaluation, observability, prompts, agents, and security layers from the start
 
-The script refuses to write into a non-empty directory unless `--force` or `--overwrite` is passed. `--force` fills missing files without replacing existing files; `--overwrite` replaces existing files.
-
-## Generated Structure
+## What It Generates
 
 The default scaffold includes:
 
-- `app/`: FastAPI entrypoint, config, schemas, retrieval components, five service layers, prompts, agents, tools, and security filters.
-- `app/prompts/`: typed, versioned prompt schema, templates, and registry.
+- `app/`: FastAPI entrypoint, config, schemas, retrieval components, five service layers, agents, tools, and security filters.
+- `app/prompts/`: typed, versioned prompt schema, templates, and registry so prompt text stays out of service logic.
 - `evaluation/`: golden dataset, offline evaluation, online monitor, and result folder.
 - `observability/`: shared `trace_id` / `query_id` contracts, tracing, feedback, and cost tracking.
 - `.claude/` and `.codex/`: coding-agent context and rules.
-- `data/`, `scripts/`, `frontend/`, `tests/`, and `docs/`.
+- `data/`, `scripts/`, `frontend/`, `tests/`, `docs/`, `Dockerfile`, and `docker-compose.yml`.
 
-## Validate A Generated Project
+## Example Request
 
-```bash
-python3 -m compileall -q ./production-ai-app
-PYTHONPATH=./production-ai-app python3 -c "from app.prompts.registry import get_prompt; print(get_prompt('query-routing').version)"
+```text
+Use $scaffold-ai-app to create a project named customer-support-ai in ./customer-support-ai. Keep the default production layers and make the README describe a support-ticket RAG assistant.
 ```
+
+Codex will use the skill, generate the scaffold, and adapt the placeholder files to the project you described.
