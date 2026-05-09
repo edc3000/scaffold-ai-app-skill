@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+dist/
+coverage/

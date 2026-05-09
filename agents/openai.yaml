@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI App Scaffold"
+  short_description: "Scaffold production AI app projects"
+  default_prompt: "Use $scaffold-ai-app to create a production-ready AI app project scaffold."

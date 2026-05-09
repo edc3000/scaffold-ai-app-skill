@@ -1,0 +1,38 @@
+{
+  "name": "scaffold-ai-app-skill",
+  "version": "0.1.0",
+  "description": "Codex skill for scaffolding production-oriented AI application projects.",
+  "license": "MIT",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edc3000/scaffold-ai-app-skill.git"
+  },
+  "homepage": "https://github.com/edc3000/scaffold-ai-app-skill#readme",
+  "bugs": {
+    "url": "https://github.com/edc3000/scaffold-ai-app-skill/issues"
+  },
+  "bin": {
+    "scaffold-ai-app-skill": "./bin/install.js"
+  },
+  "files": [
+    "SKILL.md",
+    "agents/",
+    "references/",
+    "scripts/",
+    "bin/",
+    "README.md",
+    "README.zh-CN.md"
+  ],
+  "keywords": [
+    "codex",
+    "skill",
+    "ai-app",
+    "rag",
+    "fastapi",
+    "scaffold"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
