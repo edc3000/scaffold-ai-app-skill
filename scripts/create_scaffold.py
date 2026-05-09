@@ -131,13 +131,14 @@ class CostEvent:
 def tracer_module() -> str:
     return '''"""Per-stage tracing with trace_id/query_id propagation."""
 
+from typing import Optional
 from uuid import uuid4
 
 from observability.events import TraceContext
 
 
 class Tracer:
-    def start_query(self, query_id: str | None = None) -> TraceContext:
+    def start_query(self, query_id: Optional[str] = None) -> TraceContext:
         return TraceContext(trace_id=str(uuid4()), query_id=query_id or str(uuid4()))
 
     def stage(self, context: TraceContext, stage: str) -> TraceContext:
@@ -205,7 +206,7 @@ def files(project_name: str, include_frontend: bool) -> dict[str, str]:
     base: dict[str, str] = {
         ".env.example": "APP_ENV=development\nLOG_LEVEL=INFO\nOPENAI_API_KEY=\nVECTOR_STORE_URL=\n",
         "README.md": f"# {title}\n\nProduction-oriented AI application scaffold.\n\n## Layout\n\n- `app/`: API, retrieval, five service layers, versioned prompts, agents, tools, and safety layers.\n- `evaluation/`: golden data and offline/online evaluation runners.\n- `observability/`: shared trace/query event contracts, feedback, and cost tracking.\n- `.claude/` and `.codex/`: coding-agent project context and rules.\n- `data/`: raw data, processed data, and index config.\n- `tests/`: focused tests for retrieval, cache, and routing.\n",
-        "pyproject.toml": f"[build-system]\nrequires = [\"setuptools>=68\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"{project_name}\"\nversion = \"0.1.0\"\ndescription = \"Production-oriented AI application\"\nrequires-python = \">=3.10\"\ndependencies = [\n    \"fastapi>=0.110\",\n    \"uvicorn[standard]>=0.27\",\n    \"pydantic>=2\",\n    \"pydantic-settings>=2\",\n]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\n",
+        "pyproject.toml": f"[build-system]\nrequires = [\"setuptools>=68\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"{project_name}\"\nversion = \"0.1.0\"\ndescription = \"Production-oriented AI application\"\nrequires-python = \">=3.9\"\ndependencies = [\n    \"fastapi>=0.110\",\n    \"uvicorn[standard]>=0.27\",\n    \"pydantic>=2\",\n    \"pydantic-settings>=2\",\n]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\n",
         "docker-compose.yml": "services:\n  api:\n    build:\n      context: .\n      dockerfile: app/Dockerfile\n    env_file: .env\n    ports:\n      - \"8000:8000\"\n",
         "AGENTS.md": "# Agent Instructions\n\nKeep retrieval, services, prompts, agents, tools, security, evaluation, and observability as separate layers. Prefer small, testable changes and update docs when contracts move.\n",
         "CLAUDE.md": "# Claude Context\n\nStart with `.claude/context.md`, then follow AGENTS.md for shared coding-agent rules. Use tests and docs as the source of truth when changing behavior.\n",
