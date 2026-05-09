@@ -8,23 +8,13 @@ English documentation: [README.md](./README.md)
 
 ## 安装
 
-从 GitHub 直接安装：
+使用 open skills CLI 安装：
 
 ```bash
-npx github:edc3000/scaffold-ai-app-skill
+npx skills add https://github.com/edc3000/scaffold-ai-app-skill --skill scaffold-ai-app
 ```
 
-发布到 npm 后，可以使用常规 npm 包方式安装：
-
-```bash
-npx scaffold-ai-app-skill
-```
-
-这两个命令都会把 skill 安装到：
-
-```bash
-${CODEX_HOME:-$HOME/.codex}/skills/scaffold-ai-app
-```
+这个命令会读取公开 GitHub 仓库，找到 `scaffold-ai-app` 这个 skill，并安装到当前检测到的 agent 环境中。
 
 如果 Codex 的 skill 列表还没有刷新，重启 Codex 或开启一个新会话。
 

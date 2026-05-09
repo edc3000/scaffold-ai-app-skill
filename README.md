@@ -8,23 +8,13 @@ Turn a blank folder into a production-shaped AI application skeleton in one Code
 
 ## Install
 
-Install the skill directly from GitHub:
+Install the skill with the open skills CLI:
 
 ```bash
-npx github:edc3000/scaffold-ai-app-skill
+npx skills add https://github.com/edc3000/scaffold-ai-app-skill --skill scaffold-ai-app
 ```
 
-After it is published to npm, install it with the regular npm package form:
-
-```bash
-npx scaffold-ai-app-skill
-```
-
-Both commands install the skill to:
-
-```bash
-${CODEX_HOME:-$HOME/.codex}/skills/scaffold-ai-app
-```
+This reads the public GitHub repository, finds the `scaffold-ai-app` skill, and installs it for your detected agent environment.
 
 Restart Codex or start a new session if the skill list has not refreshed.
 
