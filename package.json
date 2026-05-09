@@ -13,7 +13,7 @@
     "url": "https://github.com/edc3000/scaffold-ai-app-skill/issues"
   },
   "bin": {
-    "scaffold-ai-app-skill": "./bin/install.js"
+    "scaffold-ai-app-skill": "bin/install.js"
   },
   "files": [
     "SKILL.md",
