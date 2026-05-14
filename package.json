@@ -1,7 +1,7 @@
 {
   "name": "scaffold-ai-app-skill",
   "version": "0.1.1",
-  "description": "Codex skill for scaffolding production-oriented AI application projects.",
+  "description": "Agent CLI skill for scaffolding production-oriented AI application projects.",
   "license": "MIT",
   "type": "commonjs",
   "repository": {

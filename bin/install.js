@@ -84,7 +84,7 @@ Re-run with --force to replace it, or use --target <path>.`);
   }
 
   console.log(`Installed ${SKILL_NAME} to ${target}`);
-  console.log("Restart Codex or start a new session if the skill list has not refreshed yet.");
+  console.log("Restart your agent CLI or start a new session if the skill list has not refreshed yet.");
 }
 
 try {
